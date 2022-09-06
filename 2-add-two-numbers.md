@@ -54,17 +54,52 @@ None
 
 ### Solution
 
-```
+```py
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
+        a, i = [], 1
+        b, j = [], 1
+        while l1!=None :
+            a += [str(l1.val)]
+            l1 = l1.next
+        while l2!=None:
+            b += [str(l2.val)]
+            l2 = l2.next
+        a1, b1 = int("".join(a[::-1])), int("".join(b[::-1]))
+        l = str(a1+b1)
+        l5 = [i for i in l]
+        l5 = l5[::-1]
+        ans = ListNode()
+        ans.val = 10**8
+        def addend(data, node):
+            newnode = ListNode()
+            newnode.val = data
+            if node.val == 10**8:
+                node.val = data
+                node.next = None
+                return
+            while(node.next):
+                node = node.next
+            node.next = newnode
+        print("".join(l5))
+        for i in l5:
+            addend(i, ans)
+        return ans
 ```
 
 <br>
 
 ### Statistics
 
-- total accepted: 3075529
-- total submissions: 7801077
+- total accepted: 3075782
+- total submissions: 7801634
 - acceptance rate: 39.4%
-- likes: 21216
+- likes: 21217
 - dislikes: 4178
 
 <br>
