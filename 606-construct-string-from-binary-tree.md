@@ -1,0 +1,96 @@
+# [606] Construct String from Binary Tree
+
+**[string, tree, depth-first-search, binary-tree]**
+
+### Statement
+
+Given the `root` of a binary tree, construct a string consisting of parenthesis and integers from a binary tree with the preorder traversal way, and return it.
+
+Omit all the empty parenthesis pairs that do not affect the one-to-one mapping relationship between the string and the original binary tree.
+
+
+**Example 1:**
+![](https://assets.leetcode.com/uploads/2021/05/03/cons1-tree.jpg)
+
+```
+
+**Input:** root = [1,2,3,4]
+**Output:** "1(2(4))(3)"
+**Explanation:** Originally, it needs to be "1(2(4)())(3()())", but you need to omit all the unnecessary empty parenthesis pairs. And it will be "1(2(4))(3)"
+
+```
+
+**Example 2:**
+![](https://assets.leetcode.com/uploads/2021/05/03/cons2-tree.jpg)
+
+```
+
+**Input:** root = [1,2,3,null,4]
+**Output:** "1(2()(4))(3)"
+**Explanation:** Almost the same as the first example, except we cannot omit the first parenthesis pair to break the one-to-one mapping relationship between the input and the output.
+
+```
+
+**Constraints:**
+* The number of nodes in the tree is in the range `[1, 104]`.
+* `-1000 <= Node.val <= 1000`
+
+
+<br>
+
+### Hints
+
+None
+
+<br>
+
+### Solution
+
+```py
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def tree2str(self, root: Optional[TreeNode]) -> str:
+        lst = []
+        def preorder(root, lst):
+            if not root:
+                return
+            lst.append(str(root.val))
+            if root.left == None and root.right == None:
+                return
+            if root.left and not root.right:
+                lst.append('(')
+                preorder(root.left, lst)
+                lst.append(')')
+                return
+            lst.append('(')
+            preorder(root.left, lst)
+            lst.append(')')
+            lst.append('(')
+            preorder(root.right, lst)
+            lst.append(')')
+        preorder(root, lst)
+        return "".join(lst)
+                
+```
+
+<br>
+
+### Statistics
+
+- total accepted: 153382
+- total submissions: 255740
+- acceptance rate: 60.0%
+- likes: 1719
+- dislikes: 2179
+
+<br>
+
+### Similar Problems
+
+- [Construct Binary Tree from String](https://leetcode.com/problems/construct-binary-tree-from-string) (Medium)
+- [Find Duplicate Subtrees](https://leetcode.com/problems/find-duplicate-subtrees) (Medium)
