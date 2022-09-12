@@ -1,0 +1,80 @@
+# [1351] Count Negative Numbers in a Sorted Matrix
+
+**[array, binary-search, matrix]**
+
+### Statement
+
+Given a `m x n` matrix `grid` which is sorted in non-increasing order both row-wise and column-wise, return *the number of **negative** numbers in* `grid`.
+
+
+**Example 1:**
+
+```
+
+**Input:** grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]
+**Output:** 8
+**Explanation:** There are 8 negatives number in the matrix.
+
+```
+
+**Example 2:**
+
+```
+
+**Input:** grid = [[3,2],[1,0]]
+**Output:** 0
+
+```
+
+**Constraints:**
+* `m == grid.length`
+* `n == grid[i].length`
+* `1 <= m, n <= 100`
+* `-100 <= grid[i][j] <= 100`
+
+
+**Follow up:** Could you find an `O(n + m)` solution?
+
+<br>
+
+### Hints
+
+- Use binary search for optimization or simply brute force.
+
+<br>
+
+### Solution
+
+```py
+import sys
+input = sys.stdin.readline
+class Solution:
+    def countNegatives(self, grid: List[List[int]]) -> int:
+        m, n = len(grid), len(grid[0])
+        ans = m*n
+        i, j = 0, n-1
+        while i < m and j >= 0:
+            if grid[i][j] >= 0:
+                i+=1
+                ans -= (j+1)
+            else:
+                j -= 1
+            print(ans)
+        return ans
+```
+
+<br>
+
+### Statistics
+
+- total accepted: 201744
+- total submissions: 268278
+- acceptance rate: 75.2%
+- likes: 2663
+- dislikes: 81
+
+<br>
+
+### Similar Problems
+
+None
