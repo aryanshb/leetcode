@@ -49,7 +49,7 @@ class Solution:
     
     
         def trapTomax(height):
-            cur_max  =0
+            cur_max = 0
             water = 0
             for h in height:
                 if h < cur_max:
@@ -70,11 +70,11 @@ class Solution:
 
 ### Statistics
 
-- total accepted: 1265775
-- total submissions: 2190370
-- acceptance rate: 57.8%
-- likes: 21558
-- dislikes: 293
+- total accepted: 1299539
+- total submissions: 2235799
+- acceptance rate: 58.1%
+- likes: 22191
+- dislikes: 298
 
 <br>
 
