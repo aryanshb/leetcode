@@ -45,13 +45,7 @@ Given a string `sentence` containing only lowercase English letters, return`true
 ```py
 class Solution:
     def checkIfPangram(self, sentence: str) -> bool:
-        a = 'abcdefghijklmnopqrstuvwxyz'
-        a = enumerate(a)
-        print(a)
-        b = enumerate(sentence)
-        for i in a:
-            if i not in b: return False
-        return True
+        return True if len(set(sentence)) == 26 else False
 ```
 
 <br>
